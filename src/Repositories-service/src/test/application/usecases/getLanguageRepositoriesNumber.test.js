@@ -2,20 +2,16 @@ const { expect } = require('chai');
 const {
     describe, it, before
 } = require('mocha');
-const Sinon = require('sinon');
+const sinon = require('sinon');
+const { default: RepositoryService } = require('../../../api/application/adapters/Repository.Service');
 const { default: getLanguageRepositoriesNumberUsecase } = require('../../../api/application/usecases/getLanguageRepositoriesNumber');
-const { RepositoryService } = require('../../../api/config/dependencies');
 
 describe('Language repositories Number', () => {
-    let repositoryService;
-    let languageRepositoriesNumber;
-    before(() => {
-        repositoryService = RepositoryService;
-        languageRepositoriesNumber = getLanguageRepositoriesNumberUsecase(repositoryService);
-    });
 
     it('should not return 1', (done) => {
-        const stub = Sinon.stub(repositoryService, 'getLanguageRepositoriesNumber').returns(1);
+        const repositoryService = new RepositoryService();
+        const stub = sinon.stub(repositoryService, 'getLanguageRepositoriesNumber').returns(1);
+        const languageRepositoriesNumber = getLanguageRepositoriesNumberUsecase(repositoryService);
         const reposNumber = languageRepositoriesNumber.Execute('Python');
         // eslint-disable-next-line no-unused-expressions
         expect(stub.calledOnce).to.be.true;
