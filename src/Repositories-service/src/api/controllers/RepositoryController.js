@@ -1,7 +1,11 @@
+import getLanguageRepositoriesListUsecase from '../application/usecases/getLanguageRepositoriesList';
+import getLanguageRepositoriesNumberUsecase from '../application/usecases/getLanguageRepositoriesNumber';
+import getTrendingRepositoriesLanguagesUsecase from '../application/usecases/getTrendingRepositoriesLanguages';
+
 export default function RepositoryController(repositoryService) {
 
     const getTrendingRepositoriesLanguages = (request, response, next) => {
-        const trendingRepositoriesLanguages = getTrendingRepositoriesLanguages(repositoryService);
+        const trendingRepositoriesLanguages = getTrendingRepositoriesLanguagesUsecase(repositoryService);
         trendingRepositoriesLanguages.Execute().then((languages) => {
             response.status(200).json(languages);
         }, (error) => {
@@ -11,7 +15,7 @@ export default function RepositoryController(repositoryService) {
 
     const getLanguageRepositoriesNumber = (request, response, next) => {
         const { language } = request.params;
-        const languageRepositoriesNumber = getLanguageRepositoriesNumber(repositoryService);
+        const languageRepositoriesNumber = getLanguageRepositoriesNumberUsecase(repositoryService);
         languageRepositoriesNumber.Execute(language).then((repositoriesNumber) => {
             response.status(200).json({
                 repositoriesNumber
@@ -23,7 +27,7 @@ export default function RepositoryController(repositoryService) {
 
     const getLanguageRepositoriesList = (request, response, next) => {
         const { language } = request.params;
-        const languageRepositoriesList = getLanguageRepositoriesList(repositoryService);
+        const languageRepositoriesList = getLanguageRepositoriesListUsecase(repositoryService);
         languageRepositoriesList.Execute(language).then((languageRepositories) => {
             response.status(200).json(languageRepositories);
         }, (error) => {

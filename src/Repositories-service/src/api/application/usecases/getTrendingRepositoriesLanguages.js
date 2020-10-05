@@ -1,4 +1,4 @@
-export default function getTrendingRepositoriesLanguages(RepositoryService) {
+export default function getTrendingRepositoriesLanguagesUsecase(RepositoryService) {
 
     function Execute() {
         return RepositoryService.getTrendingRepositoriesLanguages();

@@ -1,7 +1,7 @@
-export default function getLanguageRepositoriesList(RepositoryService) {
+export default function getLanguageRepositoriesListUsecase(RepositoryService) {
 
-    function Execute() {
-        return RepositoryService.getLanguageRepositoriesList();
+    function Execute(language) {
+        return RepositoryService.getLanguageRepositoriesList(language);
     }
     return {
         Execute

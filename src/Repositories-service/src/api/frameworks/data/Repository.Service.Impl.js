@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import RepositoryService from '../../application/adapters/Repository.Service';
 import mapRepositoryResponse from '../common/Repository.Response.map';
 import UpperFirst from '../common/Upper.First';
@@ -7,33 +8,34 @@ export default class RepositoryServiceImpl extends RepositoryService {
     // eslint-disable-next-line no-useless-constructor
     constructor() {
         super();
-        this.fetchTrendingRepository = FetchTrendingRepository();
     }
 
-    getTrendingRepositoriesLanguages() {
+    async getTrendingRepositoriesLanguages() {
+        const trendingRepositories = await FetchTrendingRepository().Execute();
         const resultLanguages = [];
-        this.fetchTrendingRepository.Execute().forEach((element) => {
-            if (!resultLanguages.include(element.language)) {
+        trendingRepositories.forEach((element) => {
+            if (element.language !== null && resultLanguages.indexOf(element.language) === -1) {
                 resultLanguages.push(element.language);
             }
         });
         return resultLanguages;
     }
 
-    getLanguageRepositoriesNumber(language) {
+    async getLanguageRepositoriesNumber(language) {
+        const trendingRepositories = await FetchTrendingRepository().Execute();
         const upperFirstLanguage = UpperFirst(language);
-        return this.fetchTrendingRepository.Execute()
-            .filter((repo) => {
-                return repo.language === upperFirstLanguage;
-            }).length;
+        return trendingRepositories.filter((repo) => {
+            return repo.language === upperFirstLanguage;
+        }).length;
     }
 
-    getLanguageRepositoriesList(language) {
+    async getLanguageRepositoriesList(language) {
+        const trendingRepositories = await FetchTrendingRepository().Execute();
         const upperFirstLanguage = UpperFirst(language);
-        return this.fetchTrendingRepository.Execute()
-            .filter((repo) => { return repo.language === upperFirstLanguage; })
-            .map((repo) => {
-                return mapRepositoryResponse(repo);
-            });
+        return trendingRepositories.filter((repo) => {
+            return repo.language === upperFirstLanguage;
+        }).map((repo) => {
+            return mapRepositoryResponse(repo);
+        });
     }
 }

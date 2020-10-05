@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./src/test/**/*.test.js --require @babel/register",
-    "start": "nodemon --exec babel-node ./src/app.js",
+    "start": "nodemon --exec babel-node ./src/api/app.js",
     "build": "npm run clean && babel src --out-dir ./dist --source-maps",
     "now-build": "npm run build",
     "debug": "node --inspect-brk ./dist/index.js"
