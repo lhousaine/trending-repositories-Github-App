@@ -16,7 +16,7 @@ import com.ouarhou.authservice.data.entities.UserAccount;
 import com.ouarhou.authservice.data.repositories.UserAccountRepository;
 
 @Service
-@Qualifier("UserDetailsUseCaseImpl")
+@Qualifier("UserDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserAccountRepository userAccountRepository;
