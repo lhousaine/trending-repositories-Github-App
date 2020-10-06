@@ -17,6 +17,6 @@ public class UserAccountDTO {
         this.userId=userAccount.getId();
         this.firstName = userAccount.getFirstName();
         this.lastName = userAccount.getLastName();
-        this.lastName = userAccount.getUsername();
+        this.username = userAccount.getUsername();
     }
 }
