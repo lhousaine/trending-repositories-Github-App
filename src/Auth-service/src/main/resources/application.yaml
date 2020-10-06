@@ -1,0 +1,4 @@
+
+jwt:
+  issuer: challenge@sqli.com
+  audience: challenge@sqli.com
