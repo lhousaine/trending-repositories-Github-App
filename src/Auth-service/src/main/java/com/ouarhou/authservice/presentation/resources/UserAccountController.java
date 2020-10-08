@@ -28,7 +28,7 @@ public class UserAccountController {
     }
 
     @PostMapping
-    public ResponseEntity<UserAccountDTO> create(@RequestBody UserAccountRequestDTO userAccountRequestDTO){
+    public ResponseEntity<UserAccountDTO> create(@RequestBody UserAccountRequestDTO userAccountRequestDTO) throws IllegalStateException,IllegalArgumentException {
         return ResponseEntity.status(200).body(createUserAccountUseCase.execute(userAccountRequestDTO));
     }
 

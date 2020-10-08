@@ -26,7 +26,7 @@ public class CreateUserAccountUseCaseImpl implements CreateUserAccountUseCase {
     }
 
     @Override
-    public UserAccountDTO execute(UserAccountRequestDTO userAccountRequestDTO) {
+    public UserAccountDTO execute(UserAccountRequestDTO userAccountRequestDTO) throws IllegalStateException,IllegalArgumentException{
         UserAccount userAccount = userAccountRequestDTO.getUserAccount();
         if (!userAccountRepository.findByUsername(userAccount.getUsername()).isEmpty()) {
             throw new IllegalStateException("Username already in use");

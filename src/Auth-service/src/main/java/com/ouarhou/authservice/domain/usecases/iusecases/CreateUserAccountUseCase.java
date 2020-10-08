@@ -5,5 +5,5 @@ import com.ouarhou.authservice.domain.dtos.UserAccountRequestDTO;
 
 public interface CreateUserAccountUseCase {
 
-    public UserAccountDTO execute(UserAccountRequestDTO userAccountRequestDTO);
+    public UserAccountDTO execute(UserAccountRequestDTO userAccountRequestDTO) throws IllegalStateException;
 }

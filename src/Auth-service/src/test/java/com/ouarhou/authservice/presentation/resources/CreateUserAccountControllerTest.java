@@ -36,11 +36,11 @@ import com.ouarhou.authservice.domain.usecases.iusecases.CreateUserAccountUseCas
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CreateUserAccountControllerTest {
 
-    private MockMvc mockMvc;
-
     @Autowired
     private WebApplicationContext wac;
-
+    
+    private MockMvc mockMvc;
+    
     @MockBean
     private CreateUserAccountUseCase userAccountUseCase;
 
@@ -54,15 +54,15 @@ public class CreateUserAccountControllerTest {
     void setUp() throws JsonProcessingException {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
         objectMapper = new ObjectMapper();
-        userAccount= UserAccount.builder()
+        userAccount = UserAccount.builder()
             .id(1L)
             .firstName("lhoussaine")
             .lastName("ouarhou")
             .username("lhou")
             .password("lhou")
             .build();
-        userAccountRequest= new UserAccountRequestDTO(userAccount,"lhou");
-        userAccountDTO=new UserAccountDTO(userAccount);
+        userAccountRequest = new UserAccountRequestDTO(userAccount, "lhou");
+        userAccountDTO = new UserAccountDTO(userAccount);
         objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter ow = objectMapper.writer().withDefaultPrettyPrinter();
         requestJson = ow.writeValueAsString(userAccountRequest);
@@ -80,20 +80,6 @@ public class CreateUserAccountControllerTest {
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.firstName").value(userAccount.getFirstName()))
             .andExpect(jsonPath("$.lastName").value(userAccountDTO.getLastName()))
-            .andExpect(jsonPath("$.username").value(userAccountDTO.getUsername()))
-            .andReturn();
+            .andExpect(jsonPath("$.username").value(userAccountDTO.getUsername()));
     }
-
-    @Test
-    public void shouldNotCreateNewUserAccountWhenUsernameAlreadyInUse() throws Exception {
-        given(userAccountUseCase.execute(any(UserAccountRequestDTO.class))).willThrow(new IllegalStateException());
-        this.mockMvc.perform(
-            post("/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestJson)
-                .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isBadRequest())
-            .andReturn();
-    }
-
 }

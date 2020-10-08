@@ -2,6 +2,7 @@ package com.ouarhou.authservice.core.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,10 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BaseErrorHandles {
 
-
     @ResponseBody
     @ExceptionHandler(value = IllegalStateException.class)
-    public ResponseEntity<?> IllegalStateException(IllegalStateException exception) {
+    public ResponseEntity<?> DataAlreadyInUseException(IllegalStateException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
