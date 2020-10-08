@@ -20,15 +20,13 @@ import lombok.experimental.Tolerate;
 @Data
 @Entity(name = "users")
 public class UserAccount implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
     @NotNull
-    @Column(unique = true)
+    @Column(unique = true,length = 20)
     private String username;
     @NotNull
     private String password;

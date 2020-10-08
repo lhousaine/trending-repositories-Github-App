@@ -1,4 +1,24 @@
+server:
+  port: 8081
 
+spring:
+  application:
+    name: Auth-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/usersService?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: lhou1234
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+
+    hibernate:
+      ddl-auto: create
 jwt:
   issuer: challenge@sqli.com
   audience: challenge@sqli.com

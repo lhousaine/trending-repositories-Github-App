@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import com.ouarhou.authservice.data.entities.UserAccount;
 import com.ouarhou.authservice.data.repositories.UserAccountRepository;
 
-@Service
 @Qualifier("UserDetailsServiceImpl")
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserAccountRepository userAccountRepository;
