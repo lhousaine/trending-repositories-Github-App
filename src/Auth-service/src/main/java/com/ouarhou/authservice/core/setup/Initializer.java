@@ -3,14 +3,17 @@ package com.ouarhou.authservice.core.setup;
 import javax.inject.Inject;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import com.ouarhou.authservice.data.entities.UserAccount;
 import com.ouarhou.authservice.domain.dtos.UserAccountRequestDTO;
 import com.ouarhou.authservice.domain.usecases.iusecases.CreateUserAccountUseCase;
 
+@Component
 public class Initializer {
 
     private static CreateUserAccountUseCase createUserAccountUseCase;
+
 
     @Inject
     public Initializer(CreateUserAccountUseCase createUserAccountUseCase) {

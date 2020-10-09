@@ -22,7 +22,7 @@ public class JwtToken implements Serializable {
 
     public static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 60 * 24 * 5;
     @Value("${jwt.issuer}")
-    private String jwt_isser;
+    private String jwt_issuer;
     @Value("${jwt.audience}")
     private String jwt_audience;
 
@@ -65,7 +65,7 @@ public class JwtToken implements Serializable {
     public String generateToken(UserDetails userDetails) throws JOSEException {
         return Jwts.builder()
             .setSubject(userDetails.getUsername())
-            .setIssuer(this.jwt_isser)
+            .setIssuer(this.jwt_issuer)
             .setAudience(this.jwt_audience)
             .setIssuedAt(new Date(System.currentTimeMillis()))
             .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))

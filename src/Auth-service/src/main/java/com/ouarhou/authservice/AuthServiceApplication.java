@@ -18,5 +18,5 @@ public class AuthServiceApplication {
     public CommandLineRunner setupDB(){
         return args -> Initializer.initializeDB();
     }
-    
+
 }
