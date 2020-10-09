@@ -14,7 +14,6 @@ import com.ouarhou.authservice.domain.dtos.JwtResponse;
 import com.ouarhou.authservice.domain.usecases.iusecases.AuthUseCase;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@EnableWebMvc
 @RestController
 public class AuthController {
 

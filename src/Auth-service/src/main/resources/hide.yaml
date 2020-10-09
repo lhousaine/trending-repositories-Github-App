@@ -1,3 +1,4 @@
+# Local test file 
 server:
   port: 8081
 
@@ -5,9 +6,9 @@ spring:
   application:
     name: Auth-SERVICE
   datasource:
-    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/authServicedb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: lhou1234
 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
@@ -20,5 +21,5 @@ spring:
     hibernate:
       ddl-auto: create
 jwt:
-  issuer: ${JWT_ISSUER}
-  audience: ${JWT_AUDIENCE}
+  issuer: test
+  audience: test

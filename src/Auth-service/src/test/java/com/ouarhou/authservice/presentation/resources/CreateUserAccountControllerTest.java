@@ -9,18 +9,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,18 +30,21 @@ import com.ouarhou.authservice.domain.dtos.UserAccountRequestDTO;
 import com.ouarhou.authservice.domain.usecases.iusecases.CreateUserAccountUseCase;
 
 @ExtendWith(SpringExtension.class)
-@WebAppConfiguration()
-@ContextConfiguration(classes = {UserAccountController.class})
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@WebMvcTest(UserAccountController.class)
 public class CreateUserAccountControllerTest {
 
     @Autowired
-    private WebApplicationContext wac;
-    
     private MockMvc mockMvc;
     
     @MockBean
     private CreateUserAccountUseCase userAccountUseCase;
+
+    @MockBean
+    @Qualifier(value="UserDetailsServiceImpl")
+    private UserDetailsService userDetailsService;
+
+    @MockBean
+    private PasswordEncoder passwordEncoder;
 
     private ObjectMapper objectMapper;
     private String requestJson;
@@ -53,7 +54,7 @@ public class CreateUserAccountControllerTest {
 
     @BeforeEach
     void setUp() throws JsonProcessingException {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        //this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
         objectMapper = new ObjectMapper();
         userAccount = UserAccount.builder()
             .id(1L)
