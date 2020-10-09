@@ -16,7 +16,6 @@ import com.ouarhou.authservice.domain.usecases.iusecases.CreateUserAccountUseCas
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@EnableWebMvc
 @RequestMapping("/users")
 public class UserAccountController {
 

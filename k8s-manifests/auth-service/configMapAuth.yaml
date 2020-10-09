@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-db-conf
+  namespace: dev-auth
+data:
+  host: mysql:3306
