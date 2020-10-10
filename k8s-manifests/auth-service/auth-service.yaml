@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: louarhou/auth-service:v1
+          image: louarhou/auth-service:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081

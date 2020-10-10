@@ -14,7 +14,7 @@ public class AuthServiceApplication {
         SpringApplication.run(AuthServiceApplication.class, args);
     }
 
-   // @Bean
+    //@Bean
     public CommandLineRunner setupDB(){
         return args -> Initializer.initializeDB();
     }

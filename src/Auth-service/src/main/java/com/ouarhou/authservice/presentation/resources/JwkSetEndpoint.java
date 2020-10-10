@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.ouarhou.authservice.core.security.RsaKeyGeneration;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/keyInfos")
+@Api(value = "JwtSet/Public Key Rest API")
 public class JwkSetEndpoint {
     private RSAKey jwk;
     @Inject
@@ -28,12 +31,14 @@ public class JwkSetEndpoint {
     }
 
     @GetMapping("/.well-known/jwks.json")
+    @ApiOperation(value = "Get JWKSet Json Object")
     @ResponseBody
     public Map<String, Object> getKey() {
         return new JWKSet(jwk).toJSONObject();
     }
 
     @GetMapping("/public/key")
+    @ApiOperation(value = "Get Public Key")
     @ResponseBody
     public String getPublicKey() throws JOSEException {
         return convertToPublicKey(jwk.toRSAPublicKey());
