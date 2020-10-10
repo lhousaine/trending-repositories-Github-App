@@ -5,5 +5,5 @@ export interface Repository{
     name: string;
     ownerLogin: string;
     language: string;
-    starsNumber: number;
+    starsNumber: number
 }

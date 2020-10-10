@@ -1,3 +1,3 @@
-export interface Language{
+export interface LoginRequest {
     name: string;
 }
