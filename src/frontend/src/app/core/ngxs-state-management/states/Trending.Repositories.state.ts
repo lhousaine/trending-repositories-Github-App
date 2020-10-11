@@ -2,18 +2,18 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Repository } from 'src/app/data/models/Repository';
 import { RepositoryService } from 'src/app/data/services/repository.service';
-import { GetLanguageTrendingRepositories, GetLanguageTrendingRepositoriesNumber, GetTrendingRepositoriesLanguages } from '../actions/Trending.Repositories.actions';
+import { GetTrendingRepositoriesLanguages, SetCurrentLanguage } from '../actions/Trending.Repositories.actions';
 import {tap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 export class TrendingRepositoryStateModel {
     trendingRepositoriesLanguages: string[];
-    languageTrendingRepositoriesNumber: number;
+    currentLanguage?: string;
     languageTrendingRepositories: Repository[];
 }
 const defaults: TrendingRepositoryStateModel = {
     trendingRepositoriesLanguages: [],
-    languageTrendingRepositoriesNumber: 0,
+    currentLanguage: null,
     languageTrendingRepositories: []
 };
 
@@ -23,6 +23,7 @@ const defaults: TrendingRepositoryStateModel = {
 })
 @Injectable()
 export class TrendingRepositoryState {
+
     constructor(private repositoryService: RepositoryService) {
     }
 
@@ -32,8 +33,8 @@ export class TrendingRepositoryState {
     }
 
     @Selector()
-    static getLanguageTrendingRepositoriesNumber(state: TrendingRepositoryStateModel): number{
-        return state.languageTrendingRepositoriesNumber;
+    static getCurrentLanguage(state: TrendingRepositoryStateModel): string {
+        return state.currentLanguage;
     }
 
     @Selector()
@@ -52,27 +53,18 @@ export class TrendingRepositoryState {
         }));
     }
 
-    @Action(GetLanguageTrendingRepositoriesNumber)
-    getRepositoriesNumber( {getState, setState}: StateContext<TrendingRepositoryStateModel>,
-                           {language}: GetLanguageTrendingRepositoriesNumber): Observable<number> {
-        return this.repositoryService.getLanguageTrendingRepositoriesNumber(language).pipe(tap((result) => {
-            const state = getState();
-            setState({
-                ...state,
-                languageTrendingRepositoriesNumber: result,
-            });
-        }));
+    @Action(SetCurrentLanguage)
+    setCurrentLanguage({getState, setState}: StateContext<TrendingRepositoryStateModel>,
+                       { language }: SetCurrentLanguage): void {
+        const state = getState();
+        this.repositoryService.getLanguageTrendingRepositories(language)
+                                           .pipe(tap((result) => {
+        setState({
+            ...state,
+            currentLanguage: language,
+            languageTrendingRepositories: result,
+        });
+    }));
     }
 
-    @Action(GetLanguageTrendingRepositories)
-    getRepositories( {getState, setState}: StateContext<TrendingRepositoryStateModel>,
-                     {language}: GetLanguageTrendingRepositories): Observable<Repository[]> {
-        return this.repositoryService.getLanguageTrendingRepositories(language).pipe(tap((result) => {
-            const state = getState();
-            setState({
-                ...state,
-                languageTrendingRepositories: result,
-            });
-        }));
-    }
 }

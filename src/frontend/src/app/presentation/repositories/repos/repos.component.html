@@ -1,1 +1,30 @@
-<p>repos works!</p>
+<div class="col-10 offset-1">
+  <div class="card">
+    <div class="card-header">
+      <p>Current Language : {{ language  }}</p>
+      <p>It has {{ 10 }} repositories among 100 trending repositories</p>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngIf="languageTrendingRepositories">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>name</th>
+              <th>owner Login</th>
+              <th>starsNumber</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let repository of languageTrendingRepositories | async">
+              <th>{{ repository.id }}</th>
+              <th>{{ repository.name }}</th>
+              <th>{{ repository.ownerLogin }}</th>
+              <th>{{ repository.starsNumber }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

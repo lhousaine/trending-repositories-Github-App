@@ -4,14 +4,10 @@ export class GetTrendingRepositoriesLanguages {
     }
 }
 
-export class GetLanguageTrendingRepositoriesNumber {
-    static readonly type = '[Language Trending Repositories Number] Get';
+export class SetCurrentLanguage {
+    static readonly type = '[Language] Set';
     constructor(public language: string) {
     }
 }
 
-export class GetLanguageTrendingRepositories {
-    static readonly type = '[Language Trending Repositories] Get';
-    constructor(public language: string) {
-    }
-}
+
