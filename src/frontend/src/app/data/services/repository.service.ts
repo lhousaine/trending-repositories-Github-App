@@ -16,15 +16,18 @@ export class RepositoryService {
 
   public getTrendingRepositoriesLanguages(): Observable<string[]> {
     return this.http.get<string[]>(this.API_REPOSITORIES_URL + '/languages');
+
   }
 
   public getLanguageTrendingRepositoriesNumber(language: string): Observable<number> {
-    return this.http.get<any>(this.API_REPOSITORIES_URL + language + '/number')
-    .pipe(map((response) => response.body.repositoriesNumber));
+    return this.http.get<any>(
+      this.API_REPOSITORIES_URL + '/' + language + '/number',
+      {observe: 'response'}
+      ).pipe(map((response) => response.body.repositoriesNumber));
   }
 
   public getLanguageTrendingRepositories(language: string): Observable<Repository[]> {
-    return this.http.get<Repository[]>(this.API_REPOSITORIES_URL + language + '/repos');
+    return this.http.get<Repository[]>(this.API_REPOSITORIES_URL + '/' + language + '/repos');
   }
 
 }

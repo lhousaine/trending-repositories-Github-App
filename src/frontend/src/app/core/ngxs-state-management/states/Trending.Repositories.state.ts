@@ -32,12 +32,12 @@ export class TrendingRepositoryState {
     }
 
     @Selector()
-    static languageTrendingRepositoriesNumber(state: TrendingRepositoryStateModel): number{
+    static getLanguageTrendingRepositoriesNumber(state: TrendingRepositoryStateModel): number{
         return state.languageTrendingRepositoriesNumber;
     }
 
     @Selector()
-    static languageTrendingRepositories(state: TrendingRepositoryStateModel): Repository[]{
+    static getLanguageTrendingRepositories(state: TrendingRepositoryStateModel): Repository[]{
         return state.languageTrendingRepositories;
     }
 

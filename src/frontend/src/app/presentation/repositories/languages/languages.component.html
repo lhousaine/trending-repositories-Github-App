@@ -1,1 +1,10 @@
-<p>languages works!</p>
+<div class="col-10 offset-1">
+    <div class="row" *ngIf="languages">
+        <div *ngFor="let language of languages | async" class="card col-3 mb-3 mx-3 d-inline-block">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ language }}</h5>
+              <button class="card-link badge badge-success text-wrap">Get More Infos</button>
+            </div>
+        </div>
+    </div>
+</div>

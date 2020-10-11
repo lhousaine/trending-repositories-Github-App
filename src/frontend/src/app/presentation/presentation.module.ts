@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PresentationRoutingModule } from './presentation-routing.module';
 import { RepositoriesModule } from './repositories/repositories.module';
 import { UserAccountModule } from './user-account/user-account.module';
+import { LayoutModule } from './layout/layout.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { UserAccountModule } from './user-account/user-account.module';
     CommonModule,
     PresentationRoutingModule,
     RepositoriesModule,
-    UserAccountModule
+    UserAccountModule,
+    LayoutModule
   ]
 })
 export class PresentationModule { }

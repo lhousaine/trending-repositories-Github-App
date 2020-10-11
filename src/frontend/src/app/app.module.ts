@@ -27,8 +27,7 @@ import { environment } from 'src/environments/environment';
     NgxsStoragePluginModule.forRoot(),
     CoreModule,
     DataModule,
-    PresentationModule,
-    LayoutModule
+    PresentationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

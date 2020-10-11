@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { GetLanguageTrendingRepositoriesNumber, GetTrendingRepositoriesLanguages } from 'src/app/core/ngxs-state-management/actions/Trending.Repositories.actions';
+import { TrendingRepositoryState } from 'src/app/core/ngxs-state-management/states/Trending.Repositories.state';
 
 @Component({
   selector: 'app-languages',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  constructor() { }
+  @Select(TrendingRepositoryState.getTrendingRepositoriesLanguages) languages: Observable<string[]>;
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new GetTrendingRepositoriesLanguages());
   }
 
 }
