@@ -1,8 +1,12 @@
 <div class="col-10 offset-1">
   <div class="card">
     <div class="card-header">
-      <p>Current Language : {{ language  }}</p>
-      <p>It has {{ 10 }} repositories among 100 trending repositories</p>
+      <div class="text-center">
+        <p class="h2"> {{ language }}</p>
+        <p class="h5">
+          {{ languageTrendingRepositoriesNumber }} repositories among 100 trending repositories
+        </p>
+      </div>
     </div>
     <div class="card-body">
       <div class="row" *ngIf="languageTrendingRepositories">

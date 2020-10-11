@@ -11,7 +11,7 @@ import { Repository } from 'src/app/data/models/Repository';
 })
 export class ReposComponent implements OnInit {
   language: string;
-
+  languageTrendingRepositoriesNumber: number;
   @Select(TrendingRepositoryState.getLanguageTrendingRepositories) languageTrendingRepositories: Observable<Repository[]>;
   @Select(TrendingRepositoryState.getCurrentLanguage) currentLanguage: Observable<string>;
 
@@ -21,6 +21,9 @@ export class ReposComponent implements OnInit {
   ngOnInit(): void {
     this.currentLanguage.subscribe(result => {
       this.language = result;
+    });
+    this.languageTrendingRepositories.subscribe(result => {
+      this.languageTrendingRepositoriesNumber = result.length;
     });
     console.log(this.language);
   }
