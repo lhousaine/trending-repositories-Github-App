@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RepositoriesNumber } from '../models/Repositories.Number';
+import { map } from 'rxjs/operators';
 import { Repository } from '../models/Repository';
 
 @Injectable({
@@ -18,8 +18,9 @@ export class RepositoryService {
     return this.http.get<string[]>(this.API_REPOSITORIES_URL + '/languages');
   }
 
-  public getLanguageTrendingRepositoriesNumber(language: string): Observable<RepositoriesNumber> {
-    return this.http.get<RepositoriesNumber>(this.API_REPOSITORIES_URL + language + '/number');
+  public getLanguageTrendingRepositoriesNumber(language: string): Observable<number> {
+    return this.http.get<any>(this.API_REPOSITORIES_URL + language + '/number')
+    .pipe(map((response) => response.body.repositoriesNumber));
   }
 
   public getLanguageTrendingRepositories(language: string): Observable<Repository[]> {
