@@ -12,4 +12,8 @@ export class LayoutReposComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isAuthenticated(): any{
+    return true;
+  }
+
 }
