@@ -13,6 +13,18 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    req.header(
+        'Access-Control-Allow-Headers,Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Mthods', 'POST, PUT, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    return next();
+});
+
 app.use('/api', apiRouter(RepositoryService));
 app.use('/api/*', NotFoundHandler);
 app.use(ErrorHandler);
