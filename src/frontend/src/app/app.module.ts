@@ -10,6 +10,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { TrendingRepositoryState } from './core/ngxs-state-management/states/Trending.Repositories.state';
 import { environment } from 'src/environments/environment';
+import { UserAccountState } from './core/ngxs-state-management/states/User.Account.state';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     NgxsModule.forRoot([
-      TrendingRepositoryState
+      TrendingRepositoryState,
+      UserAccountState
     ],
     { developmentMode: !environment.production }
     ),
