@@ -37,6 +37,7 @@ export class SignupComponent implements OnInit {
   });
   }
 
+  // tslint:disable-next-line: typedef
   get f() { return this.signupForm.controls; }
 
   onSignup(): void{

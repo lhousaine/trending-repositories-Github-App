@@ -35,6 +35,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   get f() { return this.signinForm.controls; }
 
   onSignin(): void{

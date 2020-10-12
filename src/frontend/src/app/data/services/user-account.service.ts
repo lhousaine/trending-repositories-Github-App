@@ -9,7 +9,7 @@ import { UserAccount } from '../models/UserAccount';
 @Injectable({
   providedIn: 'root',
 })
-export class UserAccountService  {
+export class UserAccountService {
   // tslint:disable-next-line: variable-name
   API_User_Account_URL = 'http://localhost:8081';
 
@@ -23,13 +23,17 @@ export class UserAccountService  {
 
   signIn(data: SignInRequest): Observable<string> {
     return this.http
-      .post<any>(this.API_User_Account_URL + '/authenticate', data, { observe: 'response' })
+      .post<any>(this.API_User_Account_URL + '/authenticate', data, {
+        observe: 'response',
+      })
       .pipe(map((response) => response.body.jwttoken));
   }
 
   signUp(data: SignUpRequest): Observable<UserAccount> {
     const test = this.http
-      .post<UserAccount>(this.API_User_Account_URL + '/users', data,{ observe: 'response' })
+      .post<UserAccount>(this.API_User_Account_URL + '/users', data, {
+        observe: 'response',
+      })
       .pipe(map((response) => response.body));
     return test;
   }
@@ -37,5 +41,4 @@ export class UserAccountService  {
   SignOut(): Observable<null> {
     return of(null);
   }
-
 }

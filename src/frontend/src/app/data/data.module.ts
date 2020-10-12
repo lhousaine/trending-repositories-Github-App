@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RepositoryService } from './services/repository.service';
+import { JwtInterceptorUtil } from '../core/utils/jwt.Interceptor.util';
 
 
 
@@ -9,6 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule
+  ],
+  providers: [
+    // ...
+    RepositoryService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorUtil,
+      multi: true
+    }
+    // ...
   ]
 })
 export class DataModule { }
