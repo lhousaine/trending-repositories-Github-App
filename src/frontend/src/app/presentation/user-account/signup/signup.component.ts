@@ -31,6 +31,7 @@ export class SignupComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.valid) {
       console.log(this.signupForm.getRawValue());
+
     }else {
       console.log('There is a problem with the form');
     }
