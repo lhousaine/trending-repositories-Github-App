@@ -1,5 +1,5 @@
 <div>
-  <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <form class="form-signin" [formGroup]="signinForm" (ngSubmit)="onSignin()">
     <img
       class="mb-6 d-block mx-auto my-auto"
       src="/assets/imgs/logo.png"
@@ -19,7 +19,7 @@
         placeholder="Username"
         autofocus
       />
-      <div class="text-danger" *ngIf="loginForm.get('username').hasError('required')">
+      <div class="text-danger" *ngIf="submitted && f.username.errors?.required">
         Username is a required field
       </div>
     </div>
@@ -33,8 +33,11 @@
         class="form-control"
         placeholder="Password"
       />
-      <div class="text-danger" *ngIf="loginForm.get('password').hasError('required')">
+      <div class="text-danger" *ngIf="submitted && f.password.errors?.required">
         Password is a required field
+      </div>
+      <div class="text-danger" *ngIf="submitted && signInError!==''">
+        {{ signInError }}
       </div>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">

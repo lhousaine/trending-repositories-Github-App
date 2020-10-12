@@ -16,7 +16,7 @@ const defaults: UserAccountStateModel = {
 };
 
 @State<UserAccountStateModel>({
-  name: 'user',
+  name: 'currentUser',
   defaults
 })
 @Injectable()
