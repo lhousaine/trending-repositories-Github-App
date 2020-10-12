@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  onLogin(){
+  onLogin(): void{
     if (this.loginForm.valid) {
       console.log(this.loginForm.getRawValue());
     }else {

@@ -1,1 +1,112 @@
-<p>signup works!</p>
+<div>
+  <form class="form-signup" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+    <img
+      class="mb-6 d-block mx-auto my-auto"
+      src="/assets/imgs/logo.png"
+      alt="logo"
+      width="40"
+      height="40"
+    />
+    <h1 class="h3 mb-6 font-weight-normal">Sign Up</h1>
+
+    <div class="form-group">
+      <label for="inputFirstName" class="sr-only">First Name</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        name="firstName"
+        id="inputFirstName"
+        class="form-control"
+        placeholder="FirstName"
+        autofocus
+      />
+      <div class="text-danger" *ngIf="submitted && f.firstName.errors?.required">
+        First Name is a required field
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputLastName" class="sr-only">Last Name</label>
+      <input
+        type="text"
+        formControlName="lastName"
+        name="lastName"
+        id="inputLastName"
+        class="form-control"
+        placeholder="LastName"
+        autofocus
+      />
+      <div class="text-danger" *ngIf="submitted && f.lastName.errors?.required">
+        First Name is a required field
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input
+        type="text"
+        formControlName="username"
+        name="username"
+        id="inputUsername"
+        class="form-control"
+        placeholder="Username"
+        autofocus
+      />
+      <div class="text-danger" *ngIf="submitted && f.username.errors?.required">
+        Username is a required field
+      </div>
+      <div class="text-danger" *ngIf="f.username.errors?.minlength">
+        Username must be at least 3 characters
+      </div>
+      <div class="text-danger" *ngIf="f.username.errors?.maxlength">
+        Username must be at most 15 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">password</label>
+      <input
+        type="password"
+        formControlName="password"
+        name="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+      />
+      <div class="text-danger" *ngIf="submitted && f.password.errors?.required">
+        Password is a required field
+      </div>
+      <div class="text-danger" *ngIf="f.password.errors?.minlength">
+        Password must be at least 6 characters
+      </div>
+      <div class="text-danger" *ngIf="f.password.errors?.maxlength">
+        Password must be at most 25 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputConfirmedPassword" class="sr-only"
+        >Confirm Password</label
+      >
+      <input
+        type="password"
+        formControlName="confirmedPassword"
+        name="confirmedPassword"
+        id="inputConfirmedPassword"
+        class="form-control"
+        placeholder="confirmedPassword"
+      />
+      <div class="text-danger" *ngIf="submitted && f.confirmedPassword.errors?.required">
+        Confrim Password is a required
+      </div>
+      <div *ngIf="f.confirmedPassword.errors?.mustMatch">
+        Confirmed Password must match Password
+      </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Sign Up
+    </button>
+    <p class="mt-5 mb-3 text-muted">Gymography &copy; 2020</p>
+  </form>
+</div>
