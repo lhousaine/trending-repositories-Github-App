@@ -22,10 +22,13 @@
       </ul>
       <ul class="navbar-nav mr-5">
         <li *ngIf="!isAuthenticated()" class="nav-item">
-          <a class="nav-link btn" href="/login">Login</a>
+          <a class="nav-link btn" routerLink="/signin">sign In</a>
+        </li>
+        <li *ngIf="!isAuthenticated()" class="nav-item">
+          <a class="nav-link btn" routerLink="/signup">sign Up</a>
         </li>
         <li *ngIf="isAuthenticated()" class="nav-item">
-          <a class="nav-link btn" (click)="logOut()">Logout</a>
+          <a class="nav-link btn" (click)="signOut()">sign Out</a>
         </li>
       </ul>
     </div>

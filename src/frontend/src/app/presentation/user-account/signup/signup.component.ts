@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngxs/store';
-import { map, tap } from 'rxjs/operators';
 import { AuthenticationUtil } from 'src/app/core/utils/Authentication.util';
 import { mapSignupFromToSignupRequest } from 'src/app/core/utils/mapsignupForm.ToSignupRequest';
 import { MustMatch } from 'src/app/core/utils/Password.Helper';
@@ -49,7 +47,7 @@ export class SignupComponent implements OnInit {
       .subscribe((result) => {
         console.log('success Auth' + result);
         this.signUpError = '';
-        this.router.navigate(['repositories/languages']);
+        this.router.navigate(['accounts/signin']);
       }, error => {
         console.log(error);
         this.signUpError = error.error;
