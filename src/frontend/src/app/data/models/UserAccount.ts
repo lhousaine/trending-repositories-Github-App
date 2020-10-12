@@ -1,7 +1,6 @@
 export interface UserAccount {
-    id: number;
-    firstName: string;
-    lastName: string;
-    username: string;
+    firstName?: string;
+    lastName?: string;
+    username?: string;
     password: string;
 }

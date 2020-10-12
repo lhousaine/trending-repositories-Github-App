@@ -1,4 +1,4 @@
-.form-signin {
+.form-signup {
     width: 100%;
     max-width: 450px;
     padding: 15px;
@@ -9,7 +9,7 @@
     background: #ffffff;
 }
 
-.form-signin .checkbox {
+.form-signup .checkbox {
     font-weight: 400;
 }
 
@@ -28,17 +28,17 @@
     font-size: 16px;
 }
 
-.form-signin .form-control:focus {
+.form-signup .form-control:focus {
     z-index: 2;
 }
 
-.form-signin input[type="text"] {
+.form-signup input[type="text"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signup input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;

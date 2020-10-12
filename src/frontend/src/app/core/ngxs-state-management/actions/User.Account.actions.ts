@@ -8,14 +8,7 @@ export class SignInUser {
     }
 
 }
-export class SignUpUser {
-    static readonly type = '[Auth-Service] SignUp';
-
-    constructor(public payload: SignUpRequest ) {
-    }
-
-}
 
 export class SignOutUser {
-    static readonly type = '[Auth-Service] SignOut';
+    static readonly type = '[Frontend] SignOut';
 }

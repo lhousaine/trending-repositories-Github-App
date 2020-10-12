@@ -28,9 +28,10 @@ export class UserAccountService  {
   }
 
   signUp(data: SignUpRequest): Observable<UserAccount> {
-    return this.http
-      .post<any>(this.API_User_Account_URL + '/users', data, { observe: 'response' })
+    const test = this.http
+      .post<UserAccount>(this.API_User_Account_URL + '/users', data,{ observe: 'response' })
       .pipe(map((response) => response.body));
+    return test;
   }
 
   SignOut(): Observable<null> {

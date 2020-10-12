@@ -8,7 +8,6 @@
       height="40"
     />
     <h1 class="h3 mb-6 font-weight-normal">Sign Up</h1>
-
     <div class="form-group">
       <label for="inputFirstName" class="sr-only">First Name</label>
       <input
@@ -20,7 +19,10 @@
         placeholder="FirstName"
         autofocus
       />
-      <div class="text-danger" *ngIf="submitted && f.firstName.errors?.required">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.firstName.errors?.required"
+      >
         First Name is a required field
       </div>
     </div>
@@ -34,7 +36,6 @@
         id="inputLastName"
         class="form-control"
         placeholder="LastName"
-        autofocus
       />
       <div class="text-danger" *ngIf="submitted && f.lastName.errors?.required">
         First Name is a required field
@@ -50,15 +51,20 @@
         id="inputUsername"
         class="form-control"
         placeholder="Username"
-        autofocus
       />
       <div class="text-danger" *ngIf="submitted && f.username.errors?.required">
         Username is a required field
       </div>
-      <div class="text-danger" *ngIf="f.username.errors?.minlength">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.username.errors?.minlength"
+      >
         Username must be at least 3 characters
       </div>
-      <div class="text-danger" *ngIf="f.username.errors?.maxlength">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.username.errors?.maxlength"
+      >
         Username must be at most 15 characters
       </div>
     </div>
@@ -76,14 +82,19 @@
       <div class="text-danger" *ngIf="submitted && f.password.errors?.required">
         Password is a required field
       </div>
-      <div class="text-danger" *ngIf="f.password.errors?.minlength">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.password.errors?.minlength"
+      >
         Password must be at least 6 characters
       </div>
-      <div class="text-danger" *ngIf="f.password.errors?.maxlength">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.password.errors?.maxlength"
+      >
         Password must be at most 25 characters
       </div>
     </div>
-
     <div class="form-group">
       <label for="inputConfirmedPassword" class="sr-only"
         >Confirm Password</label
@@ -96,14 +107,22 @@
         class="form-control"
         placeholder="confirmedPassword"
       />
-      <div class="text-danger" *ngIf="submitted && f.confirmedPassword.errors?.required">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.confirmedPassword.errors?.required"
+      >
         Confrim Password is a required
       </div>
-      <div *ngIf="f.confirmedPassword.errors?.mustMatch">
+      <div
+        class="text-danger"
+        *ngIf="submitted && f.confirmedPassword.errors?.mustMatch"
+      >
         Confirmed Password must match Password
       </div>
+      <div class="text-danger" *ngIf="submitted && signUpError !== ''">
+        {{ signUpError }}
+      </div>
     </div>
-
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Sign Up
     </button>
