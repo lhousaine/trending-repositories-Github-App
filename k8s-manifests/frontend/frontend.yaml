@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: frontend-svcacc
+  namespace: dev-frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  name: dev-frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - name: frontend
+    port: 4200
+    protocol: TCP
+  selector:
+    deployment-label-key: frontend
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: dev-frontend
+    app.kubernetes.io/version: v1
+  name: frontend
+  namespace: dev-frontend
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        label-key : frontend  
+    spec:
+      containers:
+        - name: frontend
+          image: louarhou/frontend:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 4200
+      serviceAccountName: frontend-svcacc
