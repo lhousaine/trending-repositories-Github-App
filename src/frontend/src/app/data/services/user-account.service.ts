@@ -5,13 +5,14 @@ import { map } from 'rxjs/operators';
 import { SignInRequest } from '../models/LoginRequest';
 import { SignUpRequest } from '../models/SignUpRequest';
 import { UserAccount } from '../models/UserAccount';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserAccountService {
   // tslint:disable-next-line: variable-name
-  API_User_Account_URL = 'http://localhost:8081';
+  API_User_Account_URL = environment.AUTH_API_URL;
 
   httpsOptions = {
     headers: new HttpHeaders({

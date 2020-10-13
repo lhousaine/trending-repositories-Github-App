@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Repository } from '../models/Repository';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Repository } from '../models/Repository';
 })
 export class RepositoryService {
 
-  API_REPOSITORIES_URL = 'http://localhost:3000/api/repositories';
+  API_REPOSITORIES_URL = environment.REPOSITORIES_API_URL;
 
   constructor(private http: HttpClient) {
   }
