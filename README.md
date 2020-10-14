@@ -4,6 +4,6 @@ My application is a microservices application. It consists of a 3-tier microserv
 
 <br> to read more about all applications developpement, deployement configurations, and istio Injection, you can refer to :
 
- + [developpement documentation]()
- + [k8s deployment configs]()
- + [istio features injection]()
+ + [developpement documentation](https://github.com/lhousaine/united-remote-Project/tree/main/src/README.md)
+ + [k8s deployment configs](https://github.com/lhousaine/united-remote-Project/tree/main/k8s-manifests/README.md)
+ + [istio features injection](https://github.com/lhousaine/united-remote-Project/tree/main/istio-manifests/README.md)
