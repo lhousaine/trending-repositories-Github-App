@@ -5,6 +5,9 @@ import NotFoundHandler from './frameworks/common/NotFound.Handler';
 const bodyParser = require('body-parser');
 const express = require('express');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 const { default: apiRouter } = require('./frameworks/web/routes');
 
 const app = express();
@@ -28,6 +31,8 @@ app.use((req, res, next) => {
 app.use('/api', apiRouter(RepositoryService));
 app.use('/api/*', NotFoundHandler);
 app.use(ErrorHandler);
+
+app.use('/swagger-ui.html', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
     console.log('Example app listening at port : ', port);

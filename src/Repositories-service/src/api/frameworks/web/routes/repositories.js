@@ -6,11 +6,6 @@ export default function repositoriesRouter(repositoryService) {
 
     const controller = RepositoryController(repositoryService);
 
-    router.route('/hello').get((req, resp) => {
-        console.log('Hello World');
-        resp.status(200).send('Hello world');
-    });
-
     router.route('/languages')
         .get(controller.getTrendingRepositoriesLanguages);
 

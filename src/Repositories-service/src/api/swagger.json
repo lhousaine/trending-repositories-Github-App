@@ -1,0 +1,97 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Trending Repositories Service",
+      "description": "This service is responsible to fecth the trending repositories and search for thier development languages,then fetch repositories by language ",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/repositories",
+    "tags": [
+      {
+        "name": "Trending repositories",
+        "description": "API for trending repositories microservice"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/languages": {
+        "get": {
+          "tags": [
+            "Languages"
+          ],
+          "summary": "Get Trending repositories used Languages",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/languages"
+              }
+            }
+          }
+        }
+      },
+      "/{language}/number": {
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "description": "Name of language we want to get it's trending repositories number",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Language Trending repositories Number"
+          ],
+          "summary": "Get trending repositories with given language",
+          "responses": {
+            "200": {
+              "description": "repositories are found",
+              "schema": {
+                "$ref": "#/definitions/number"
+              }
+            }
+          }
+        }
+      },
+      "/{language}/repos": {
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "description": "Name of language we want to get it's trending repositories",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "language trending repositories"
+          ],
+          "summary": "Get trending repositories with given language",
+          "responses": {
+            "200": {
+              "description": "repositories are found",
+              "schema": {
+                "$ref": "#/definitions/repositories"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
