@@ -46,7 +46,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Dockerize Application:
-to create docker image of the application run the command ```docker build -t username/imageName:tagversion .```.
+- To create docker image of the application run the command ```docker build -t username/imageName:tagversion .```.
+- To push image to docker hub to make it accessible for a deployment in cloud cluster, run : ```docker push username/imageName:tagversion```
 
 ### Further help
 

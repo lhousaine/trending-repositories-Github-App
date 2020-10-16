@@ -21,9 +21,22 @@ to realise this projet in a goog way, I firtly begin with a functional analysis.
 
 ### Results :
 I could explore results of the developpment of all microservices by consulting the frontend resulting application or by consulting swagger interface of the backend Microservices :<br>
-1. swagger interfaces :
-We present bellow some examples of swagger results of microservices.
-2.   Application results :
+1. Backend swagger interfaces :
+   - Auth-Service :
+  ![](../doc/imgs/auth-swagger.png)   
+   - Repositories-Service :
+![](../doc/imgs/repositories-swagger.png)   
+1.   Frontend Application results :
+  We present bellow the app frontend interface :
+  - Sign up to application Page :
+  ![](../doc/imgs/singup.png)   
+  ![](../doc/imgs/singupError.png) 
+  - Sign In to applicaption page interface :
+  ![](../doc/imgs/signin.png) 
+  - Trending repositories Languages page :
+  ![](../doc/imgs/trending-repositories-languages.png) 
+  - Languge Trending repositories page :
+  ![](../doc/imgs/language-repositories-info.png) 
 
 
 

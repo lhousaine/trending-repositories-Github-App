@@ -1,4 +1,5 @@
 # REPOSITORIES SERVICE
+
 ## Project Structure :
 ---
 This projet is the Main service in my project. It is developped to fecth trending repositories, search for used languages to develop these trending repositories, and gives statistics of every language.
@@ -25,10 +26,12 @@ Run `npm install` to install all needed dependencies included in the package.jso
 
 ### Runing units tests:
 Run `npm test` to execute the unit tests via mocha, chai and sinon.
-
+ - ***Notice: when runing tests, I have create a a function helper to return me the prior date of 30days, so To  test the function I create a test with mocha and test the fuction returned result with a fixed 30 prior date***
 ### Run Application:
 
 Run `npm start ` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
 
 ### Dockerize Application:
 To create docker image of the application run the command ```docker build -t username/imageName:tagversion .```.
+- To push image to docker hub to make it accessible for a deployment in cloud cluster, run : ```docker push username/imageName:tagversion```
+

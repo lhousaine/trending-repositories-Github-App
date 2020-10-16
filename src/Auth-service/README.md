@@ -37,3 +37,4 @@ you can run the application in three modes:
 ### Dockerize Application:
 You need first to create a Jar file as explained above in Run Application step, then run the command :
 ```docker build -t username/imageName:tagversion .```. To create docker image of the application.
+- To push image to docker hub to make it accessible for a deployment in cloud cluster, run : ```docker push username/imageName:tagversion```

@@ -8,17 +8,18 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
-  name: dev-frontend
+  namespace: dev-frontend
 spec:
-  type: LoadBalancer
-  ports:
-  - name: frontend
-    port: 4200
-    protocol: TCP
   selector:
-    deployment-label-key: frontend
+    app: frontend
+  ports:
+  - name: http
+    protocol: TCP
+    port: 4200
+    targetPort: web
+  type: LoadBalancer
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -28,6 +29,9 @@ metadata:
   name: frontend
   namespace: dev-frontend
 spec:
+  selector:
+    matchLabels:
+      app: frontend
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -37,12 +41,14 @@ spec:
   template:
     metadata:
       labels:
-        label-key : frontend  
+        app: frontend  
     spec:
       containers:
         - name: frontend
           image: louarhou/frontend:v1
           imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 4200
+          - name: web
+            containerPort: 4200
+            protocol: TCP
       serviceAccountName: frontend-svcacc

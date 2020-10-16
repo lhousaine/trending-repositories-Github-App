@@ -13,11 +13,13 @@ spec:
   selector:
     app: repositories
   ports:
-    - port: 3000
+    - name: http
+      port: 3000
       targetPort: 3000
       protocol: TCP
-  type: LoadBalancer
-  #type: LoadBalancer
+  #type: ClusterIP
+  #type: NodePort
+  type: LoadBalancer  # for testing, Not recommended for production
 ---
 apiVersion: apps/v1
 kind: Deployment
