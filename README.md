@@ -1,6 +1,12 @@
-# United Remote Challenge:
+# Github trending repositories Application:
 
-My application is a microservices application. It consists of a 3-tier microservices application. two microservices for backend and one for frontend. The application is an example web application create thier accounts, sign In to the application, consulte Trending repositories languages, and read more about language statictics by consulting it's number of repositories and repositories infos like stars number and owner. 
+My application intent is to deal with GitHub trending repositories, I designed and developed it, in order to make more of experience with Microservices architectures, clean architecture and clean code. So to better design the backend, I follow the ddd pattern, so I divide the backend into two Microservices, one for authentication and accounts creating for users, and the other one for dealing with trending repositories. And then I create the front end with angular and it's modules.
+The application allow users to :
+1. create their accounts.
+2. sign In to the application. 
+- ***allowed signed in to :***
+3. consult programming languages used by trending repositories. 
+3.  read more about a specific language statistics by consulting it's a number of repositories and repositories information like stars number and owner.
 
 <br> to read more about all applications developpement, deployement configurations, you can refer to :
 
